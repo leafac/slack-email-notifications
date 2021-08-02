@@ -9,11 +9,16 @@ const app = new App({
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.message(async ({ message }) => {
-  await sgMail.send({
-    to: "slack@leafac.com",
-    from: "sendgrid@leafac.com",
-    subject: `Messages were sent at ${message.channel}`,
-  });
+  try {
+    await sgMail.send({
+      to: "slack@leafac.com",
+      from: "sendgrid@leafac.com",
+      subject: "There are new messages on Slack",
+      text: "There are new messages on Slack",
+    });
+  } catch (error) {
+    console.error(error.response.body);
+  }
 });
 
 (async () => {
