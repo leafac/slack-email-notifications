@@ -1,14 +1,16 @@
 {
   "scripts": {
-    "start": "concurrently \"node .\" \"npx localtunnel --port 3000\""
+    "start": "node .",
+    "start:development": "concurrently \"node-dev .\" \"npx localtunnel --port 3000\""
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.5",
     "@slack/bolt": "^3.5.0",
-    "concurrently": "^6.2.0",
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
-    "localtunnel": "^2.0.1"
+    "concurrently": "^6.2.0",
+    "localtunnel": "^2.0.1",
+    "node-dev": "^7.0.0"
   }
 }
