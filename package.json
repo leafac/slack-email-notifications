@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "concurrently \"node .\" \"localtunnel --port 3000\""
+    "start": "concurrently \"node .\" \"npx localtunnel --port 3000\""
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.5",
