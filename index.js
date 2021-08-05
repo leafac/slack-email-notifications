@@ -9,19 +9,20 @@ const sendgrid = require("@sendgrid/mail");
   });
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-  slack.message(async (event) => {
-    console.log(JSON.stringify(event, undefined, 2));
-    // console.log("Sending email...");
-    // try {
-    //   await sendgrid.send({
-    //     to: "slack@leafac.com",
-    //     from: "sendgrid@leafac.com",
-    //     subject: "There are new messages on Slack",
-    //     text: "There are new messages on Slack",
-    //   });
-    // } catch (error) {
-    //   console.error(error.response.body);
-    // }
+  slack.message(async () => {
+    console.log("Sending email...");
+    try {
+      await sendgrid.send({
+        from: process.env.FROM,
+        to: process.env.TO,
+        subject: `There are new messages on Slack${
+          process.env.SLACK_WORKSPACE ? ` · ${process.env.SLACK_WORKSPACE}` : ""
+        }`,
+        text: ".",
+      });
+    } catch (error) {
+      console.error(error.response.body);
+    }
   });
 
   await slack.start(process.env.PORT ?? 3000);
