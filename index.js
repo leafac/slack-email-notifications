@@ -9,6 +9,7 @@ const app = new App({
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.message(async ({ message }) => {
+  console.log("Sending email…");
   try {
     await sgMail.send({
       to: "slack@leafac.com",
