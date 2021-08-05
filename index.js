@@ -12,7 +12,7 @@ const sendgrid = require("@sendgrid/mail");
   let lastMessageTimestamp = 0;
   slack.message(async () => {
     const shouldSendEmail =
-      Date.now() - lastMessageTimestamp <
+      Date.now() - lastMessageTimestamp >
       Number(process.env.DEBOUNCE_DURATION ?? 5 * 60 * 1000);
     lastMessageTimestamp = Date.now();
     if (shouldSendEmail)
