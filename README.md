@@ -36,3 +36,11 @@ message.channels
 `<url>/slack/events`
 
 Install bot on channel
+
+Other reasons why Slack sucks
+invitations heroku app
+markdown messages
+paid
+email notifications
+Force an app (electron)
+line length
